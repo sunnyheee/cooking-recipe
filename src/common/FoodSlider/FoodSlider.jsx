@@ -18,7 +18,7 @@ export const FoodSlider = ({title, data}) => {
                 autoPlay={true}
                 autoPlaySpeed={10000}
             >
-                {data?.map((food,idx)=><FoodCard  food={food} key={idx}/>)}
+                {data?.map((food,idx)=><FoodCard  food={food.food} key={idx}/>)}
             </Carousel>
         </div>
     )
