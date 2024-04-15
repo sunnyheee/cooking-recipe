@@ -1,21 +1,28 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import AppLayout from "./layout/AppLayout";
-import NotFoundPage from "./pages/NotFound/NotFoundPage";
-import SearchRecipe from "./pages/SearchRecipe/SearchRecipe";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Routes, Route } from "react-router-dom";
+import Mainpage from "./Mainpage.jsx";
+import AppLayout from "./layout/AppLayout.jsx";
+import SearchRecipe from "./pages/SearchRecipe/SearchRecipe.jsx";
+import NotFoundPage from "./pages/NotFound/NotFoundPage.jsx";
+import RecipeDetail from "./pages/RecipeDetail/RecipeDetail.jsx";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<AppLayout />}>
-        <Route path="/recipe">
-          <Route index element={<SearchRecipe />} />
+    <>
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
+          <Route index element={<Mainpage />} />
+          <Route path="search">
+            <Route index element={<SearchRecipe />} />
+            <Route path=":id" element={<RecipeDetail />} />
+          </Route>
         </Route>
-      </Route>
-      <Route path="*" element={<NotFoundPage />}></Route>
-    </Routes>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
   );
 }
 
