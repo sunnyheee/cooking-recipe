@@ -1,7 +1,7 @@
 import React from "react";
 
-const searchRecipe = () => {
+const SearchRecipe = () => {
   return <div>searchRecipe</div>;
 };
 
-export default searchRecipe;
+export default SearchRecipe;
