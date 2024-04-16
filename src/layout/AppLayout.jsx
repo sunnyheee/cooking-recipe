@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../common/Header/Header";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const AppLayout = () => {
+  const [keyword, setKeyword] = useState();
+  const navigate = useNavigate();
+  const searchByKeyword = (e) => {
+    e.preventDefault();
+    navigate(`/recipe?q=${keyword}`);
+    setKeyword("");
+  };
   return (
-    <main className="main">
-      <Header />
-    </main>
+    <>
+      <Header
+        keyword={keyword}
+        setKeyword={setKeyword}
+        searchByKeyword={searchByKeyword}
+      />
+      <Outlet />
+    </>
   );
 };
 
