@@ -1,5 +1,5 @@
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Mainpage from "./Mainpage.jsx";
 import AppLayout from "./layout/AppLayout.jsx";
