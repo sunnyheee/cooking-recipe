@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
-import Mainpage from "./mainpage.jsx";
+import {Routes, Route} from "react-router-dom";
+import Mainpage from "./pages/Mainpage/Mainpage.jsx";
 import AppLayout from "./layout/AppLayout.jsx";
 import SearchRecipe from "./pages/SearchRecipe/SearchRecipe.jsx";
 import NotFoundPage from "./pages/NotFound/NotFoundPage.jsx";
