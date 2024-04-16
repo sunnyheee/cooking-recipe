@@ -1,0 +1,15 @@
+.carousel-container {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    display: flex !important;
+    justify-content: space-between !important;
+}
+
+@media (min-width: 600px) {
+    .carousel-container {
+        height: 530px;
+        display: flex !important;
+        justify-content: space-between !important;
+    }
+}

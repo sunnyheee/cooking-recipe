@@ -13,6 +13,6 @@ export const useSimilarRecipe = (id)=>{
         queryKey: ['recipe-similar', id],
         queryFn: fetchSimilarRecipe(id),
         select:(result)=>result.data,
-        staleTime:600000,
+        staleTime:60000000,
     });
 }
