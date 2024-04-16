@@ -117,3 +117,11 @@ blockquote {
   margin: 0;
   padding: 0;
 }
+.inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  width: 90%;
+}
+.sec {
+  padding: 5rem 0;
+}
