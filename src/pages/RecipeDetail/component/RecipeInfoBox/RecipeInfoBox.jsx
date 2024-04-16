@@ -2,8 +2,7 @@ import React from 'react';
 import './RecipeInfoBox.style.css'
 
 
-const RecipeInfoBox = ( {data} ) => {
-  
+const RecipeInfoBox = () => { 
 
     return (
         <section className="recipe-datail-info">            
