@@ -1,5 +1,5 @@
 .bg-body-tertiary {
-  background-color: #e2725b !important;
+  background-color: var(--pointColor) !important;
 }
 .bg-body-tertiary a {
   color: #fff;
