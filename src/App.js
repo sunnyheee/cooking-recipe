@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
-import Mainpage from "./Mainpage.jsx";
+import Mainpage from "./mainpage.jsx";
 import AppLayout from "./layout/AppLayout.jsx";
 import SearchRecipe from "./pages/SearchRecipe/SearchRecipe.jsx";
 import NotFoundPage from "./pages/NotFound/NotFoundPage.jsx";

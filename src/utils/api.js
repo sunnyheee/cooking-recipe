@@ -1,12 +1,5 @@
 import axios from "axios";
 
-export const api = axios.create({
-  baseURL: "https://api.spoonacular.com",
-  headers: {
-    Accept: "application/json",
-  },
-});
-
 export const api_edamam = axios.create({
   baseURL: "https://api.edamam.com",
   headers: {
