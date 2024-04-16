@@ -11,14 +11,18 @@ import RecipeDetail from "./pages/RecipeDetail/RecipeDetail.jsx";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<AppLayout />}>
-        <Route path="/recipe">
-          <Route index element={<SearchRecipe />} />
+    <>
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
+          <Route index element={<Mainpage />} />
+          <Route path="recipe">
+            <Route index element={<SearchRecipe />} />
+            <Route path=":id" element={<RecipeDetail />} />
+          </Route>
         </Route>
-      </Route>
-      <Route path="*" element={<NotFoundPage />}></Route>
-    </Routes>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
   );
 }
 

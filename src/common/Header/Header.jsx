@@ -5,7 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "./Header.style.css";
 
-const Header = () => {
+const Header = ({ keyword, setKeyword, searchByKeyword }) => {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
@@ -26,12 +26,13 @@ const Header = () => {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/recipe">Recipe</Nav.Link>
           </Nav>
-          <Form className="d-flex ms-4">
+          <Form className="d-flex" onSubmit={searchByKeyword}>
             <Form.Control
               type="search"
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              onChange={(e) => setKeyword(e.target.value)}
             />
             <Button
               className="search-btn"
