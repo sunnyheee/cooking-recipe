@@ -1,6 +1,6 @@
 // searchRecipe.jsx
 import { useSearchParams } from "react-router-dom";
-import { Alert, Button } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import { useSearchRecipesQuery } from "../../hooks/useSearchRecipe";
 
 const SearchRecipe = () => {
@@ -22,9 +22,8 @@ const SearchRecipe = () => {
   if (isError) {
     return <Alert variant="danger">{error.message}</Alert>;
   }
-  console.log(recipeList, "recipeList");
   return (
-    <div>
+    <article>
       <h1>Search Results for: {keyword}</h1>
       {recipeList &&
         recipeList.map((recipe, index) => (
@@ -33,7 +32,7 @@ const SearchRecipe = () => {
             <p>{recipe.source}</p>
           </div>
         ))}
-    </div>
+    </article>
   );
 };
 

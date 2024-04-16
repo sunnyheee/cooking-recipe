@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "../common/Header/Header";
+import Footer from "../common/Footer/Footer";
 import { Outlet, useNavigate } from "react-router-dom";
 
 const AppLayout = () => {
@@ -18,6 +19,7 @@ const AppLayout = () => {
         searchByKeyword={searchByKeyword}
       />
       <Outlet />
+      {/* <Footer /> */}
     </>
   );
 };
