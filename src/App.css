@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
 /* reset */
-p {
-  padding: 0;
-  margin: 0;
-}
 :root {
   --fz12: 1.2rem;
   --fz14: 1.4rem;
@@ -45,6 +41,14 @@ p {
     --fz48: min(7.2vw, 4.8rem);
   }
 }
+html,
+body {
+  overflow-y: auto;
+}
+
+html {
+  font-size: 62.5%;
+}
 body {
   font-family: "Noto Sans KR", sans-serif !important;
   margin: 0;
@@ -56,7 +60,7 @@ body {
   min-height: 100vh;
   box-sizing: border-box;
   line-height: 1.8;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 h1,
 h2,
@@ -112,4 +116,12 @@ figcaption,
 blockquote {
   margin: 0;
   padding: 0;
+}
+.inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  width: 90%;
+}
+.sec {
+  padding: 5rem 0;
 }
