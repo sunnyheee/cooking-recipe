@@ -1,5 +1,3 @@
-.search-recipe {
-}
 .search-recipe h1 {
   text-align: center;
   font-size: var(--fz20);
@@ -9,10 +7,6 @@
   margin-left: 1rem;
   font-size: var(--fz24);
   color: var(--pointColorDark);
-}
-.sort-box {
-}
-.search-card-box {
 }
 
 .search-card-ul {
@@ -28,13 +22,14 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  margin-bottom: 3rem;
 }
 .search-card-ul li .card-imgarea {
   overflow: hidden;
   height: 200px;
+  position: relative;
 }
-.card-imgarea .card-imgtxt {
-}
+
 .search-card-ul li .card-imgarea img {
   max-height: 100%;
   min-width: 100%;
@@ -46,11 +41,24 @@
 }
 .search-card-ul li .card-imgarea:hover img {
   transform: scale(1.1);
-  opacity: 0.7;
 }
-.search-card-ul li .card-txtarea {
+.card-txtarea {
+  box-sizing: border-box;
   padding: 2rem;
 }
+.card-txtarea .card-txt {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  margin-top: 1rem;
+}
+
 .card-txtarea .meal {
   background-color: var(--pointColor);
   padding: 0 1rem;
@@ -61,12 +69,33 @@
   margin-bottom: 1rem;
   display: inline-block;
 }
-.recipe-sec {
-  width: 200px;
-  height: 200px;
-  background-color: red;
+.card-txtarea h3 {
+  font-size: var(--fz24);
 }
-.recipe-sidebar {
+.card-txtarea .source {
+  color: #bcbcbc;
 }
-.recipe-article {
+.card-txtarea .ingredients {
+  color: var(--pointColorDark);
+  border-bottom: 1px solid var(--pointColorDark);
+  position: relative;
+}
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination li a {
+  padding: 8px 16px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.pagination li.active a {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
 }

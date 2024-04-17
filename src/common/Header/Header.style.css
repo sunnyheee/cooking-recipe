@@ -21,3 +21,7 @@
   background-color: #811500 !important;
   border: 1px solid #310800;
 }
+.search-btn-area input,
+.search-btn-area button {
+  font-size: var(--fz16);
+}
