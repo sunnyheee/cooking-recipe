@@ -26,7 +26,7 @@ const Header = ({ keyword, setKeyword, searchByKeyword }) => {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/recipe">Recipe</Nav.Link>
           </Nav>
-          <Form className="d-flex" onSubmit={searchByKeyword}>
+          <Form className="d-flex search-btn-area" onSubmit={searchByKeyword}>
             <Form.Control
               type="search"
               placeholder="Search"

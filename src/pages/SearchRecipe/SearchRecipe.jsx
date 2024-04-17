@@ -1,12 +1,15 @@
 import "./SearchRecipe.style.css";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 import { useSearchRecipesQuery } from "../../hooks/useSearchRecipe";
+import { useState } from "react";
+import RecipeList from "./components/RecipeList";
+import RecipeSort from "./components/RecipeSort";
 
 const SearchRecipe = () => {
-  const navigate = useNavigate();
   const [query] = useSearchParams();
   const keyword = query.get("q");
+  const [sortBy, setSortBy] = useState("relevance");
 
   const {
     data: recipeList,
@@ -15,6 +18,7 @@ const SearchRecipe = () => {
     error,
   } = useSearchRecipesQuery({
     keyword,
+    sortBy,
   });
 
   if (isLoading) {
@@ -23,35 +27,23 @@ const SearchRecipe = () => {
   if (isError) {
     return <Alert variant="danger">{error.message}</Alert>;
   }
+
   console.log(recipeList, "recipeList");
   return (
     <main className="main inner">
       <section className="sec search-recipe">
-        <article className="sort-box">sort box</article>
+        <h1>
+          Search Results for:
+          <span>{keyword}</span>
+        </h1>
+        <article className="sort-box">
+          <RecipeSort setSortBy={setSortBy} />
+        </article>
         <article className="search-card-box">
-          <h1>
-            Search Results for:
-            <span>{keyword}</span>
-          </h1>
           <ul className="search-card-ul">
             {recipeList &&
               recipeList.map((recipe, index) => (
-                <li
-                  key={index}
-                  onClick={() => navigate(`/recipe/${recipe.id}`)}
-                >
-                  <div className="card-imgarea">
-                    <img src={recipe.image} alt={recipe.label} />
-                    <div className="card-imgtxt">
-                      <span>{recipe.ingredientLines.join(", ")}</span>
-                    </div>
-                  </div>
-                  <div className="card-txtarea">
-                    <span className="meal">{recipe.mealType}</span>
-                    <h3>{recipe.label}</h3>
-                    <p>{recipe.source}</p>
-                  </div>
-                </li>
+                <RecipeList recipe={recipe} key={index} />
               ))}
           </ul>
         </article>
