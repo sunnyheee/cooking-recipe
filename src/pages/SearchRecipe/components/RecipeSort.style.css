@@ -1,0 +1,10 @@
+form {
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+.form-select {
+  font-size: var(--fz16);
+  max-width: 250px;
+}
