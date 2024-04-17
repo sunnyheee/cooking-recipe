@@ -19,7 +19,7 @@ export const FoodCard = ({food}) => {
     const navigator = useNavigate();
     const handleClick = (event,food) =>{
         event.preventDefault();
-        navigator(`/recipe?q=${food.label}`);
+        navigator(`/recipe?q=${food?.label}`);
     }
 
     return (
