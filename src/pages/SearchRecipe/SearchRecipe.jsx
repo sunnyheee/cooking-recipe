@@ -15,7 +15,7 @@ const SearchRecipe = () => {
     error,
   } = useSearchRecipesQuery({
     keyword,
-  }); 
+  });
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -23,8 +23,7 @@ const SearchRecipe = () => {
   if (isError) {
     return <Alert variant="danger">{error.message}</Alert>;
   }
-  console.log(recipeList, "recipeList");  
-
+  console.log(recipeList, "recipeList");
   return (
     <main className="main inner">
       <section className="sec search-recipe">
@@ -36,12 +35,10 @@ const SearchRecipe = () => {
           </h1>
           <ul className="search-card-ul">
             {recipeList &&
-              recipeList.map((recipe, index) => {
-                const recipeId = recipe.uri.split('_').pop(); // uri에서 ID 추출
-                return (
+              recipeList.map((recipe, index) => (
                 <li
                   key={index}
-                  onClick={() => navigate(`/recipe/${recipeId}`)}
+                  onClick={() => navigate(`/recipe/${recipe.id}`)}
                 >
                   <div className="card-imgarea">
                     <img src={recipe.image} alt={recipe.label} />
@@ -55,8 +52,7 @@ const SearchRecipe = () => {
                     <p>{recipe.source}</p>
                   </div>
                 </li>
-                );
-              })}
+              ))}
           </ul>
         </article>
       </section>

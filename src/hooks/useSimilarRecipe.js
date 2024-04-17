@@ -1,18 +1,35 @@
-import {useQuery} from "@tanstack/react-query";
-import {api} from "../utils/api";
-const API_KEY = process.env.REACT_APP_API_KEY;
+import { useQuery } from "@tanstack/react-query";
+import { api_edamam } from "../utils/api";
 
+const APP_ID = process.env.REACT_APP_EDAMAM_APP_ID;
+const APP_KEY = process.env.REACT_APP_EDAMAM_APP_KEY;
 
-const fetchSimilarRecipe =(id) => {
+const fetchRecipesBySearch = async (keyword) => {
+  try {
+    const response = await api_edamam.get(
+      `/search?q=${keyword}&app_id=${APP_ID}&app_key=${APP_KEY}&from=0&to=12`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching recipes:", error);
+    return null;
+  }
+};
 
-    return api.get(`recipes/${id}/similar?apiKey=${API_KEY}`);
-}
-
-export const useSimilarRecipe = (id)=>{
-    return useQuery({
-        queryKey: ['recipe-similar', id],
-        queryFn: fetchSimilarRecipe(id),
-        select:(result)=>result.data,
-        staleTime:60000000,
-    });
-}
+export const useSearchRecipesQuery = ({ keyword }) => {
+  return useQuery({
+    queryKey: ["search-recipes", keyword],
+    queryFn: () => fetchRecipesBySearch(keyword),
+    enabled: !!keyword,
+    select: (data) =>
+      data?.hits.map((hit) => {
+        const recipe = hit.recipe;
+        return {
+          ...recipe,
+          id: extractRecipeId(recipe.uri),
+        };
+      }),
+    staleTime: 3000,
+    keepPreviousData: true,
+  });
+};

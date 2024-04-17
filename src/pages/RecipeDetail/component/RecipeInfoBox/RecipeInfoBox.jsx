@@ -1,24 +1,20 @@
 import React from 'react';
 import './RecipeInfoBox.style.css';
 import { Container, Row, Col, ListGroup } from 'react-bootstrap'; 
-import Button from 'react-bootstrap/Button';
 
-
-const RecipeInfoBox = ({ recipe }) => {
-   
+const RecipeInfoBox = ({ recipe }) => {   
 
     if (!recipe) return <p>No recipe data available.</p>;
-    console.log(recipe);
-
-    const goToRecipePage = () => {
-        window.location.href = recipe.url;
-    }
+    console.log(recipe); 
 
     return (
         <Container>
-            <Row className="mt-5 detail-box p-5 ">
+            <Row >
+                <Col><h1 className=" p-5">Recipe</h1></Col>
+            </Row>
+            <Row className=" detail-box p-5 ">
                 <Col md={6} className="d-flex justify-content-center align-items-center">
-                    <img src={recipe.image} alt={recipe.label} className="img-fluid"/>
+                    <img src={recipe.image} alt={recipe.label} className="img-fluid detail-box-img"/>
                 </Col>
                 <Col md={6}>
                     <h1 className="pb-3 pt-3"><strong>{recipe.label}</strong></h1>
@@ -40,15 +36,7 @@ const RecipeInfoBox = ({ recipe }) => {
                     </ListGroup>
                 </Col>                                               
             </Row>
-            <Row>
-                <Col>
-                    <div className="pt-5 pb-5 d-flex justify-content-center">
-                        <Button variant="primary" size="lg" onClick={goToRecipePage}>
-                            View recipe
-                        </Button>
-                    </div>
-                </Col>
-            </Row>
+           
         </Container>
     );
 }
