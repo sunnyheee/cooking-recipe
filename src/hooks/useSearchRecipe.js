@@ -1,19 +1,25 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { api_edamam } from "../utils/api";
 
 const APP_ID = process.env.REACT_APP_EDAMAM_APP_ID;
 const APP_KEY = process.env.REACT_APP_EDAMAM_APP_KEY;
 
-const fetchRecipesBySearch = async (keyword, sortBy = "relevance") => {
-  try {
-    const response = await api_edamam.get(
-      `/search?q=${keyword}&app_id=${APP_ID}&app_key=${APP_KEY}&sort=${sortBy}`
-    );
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching recipes:", error);
-    return null;
-  }
+const fetchRecipesBySearch = async (
+  keyword,
+  sortBy = "relevance",
+  pageParam = 0
+) => {
+  const perPage = 9;
+  const from = pageParam * perPage;
+  const to = from + perPage;
+  const response = await api_edamam.get(
+    `/search?q=${keyword}&app_id=${APP_ID}&app_key=${APP_KEY}&sort=${sortBy}&from=${from}&to=${to}`
+  );
+  return {
+    data: response.data.hits,
+    nextPage: pageParam + 1,
+    total: response.data.count,
+  };
 };
 
 const extractRecipeId = (uri) => {
@@ -22,27 +28,26 @@ const extractRecipeId = (uri) => {
 };
 
 export const useSearchRecipesQuery = ({ keyword, sortBy = "label" }) => {
-  // return useQuery({
-  //   queryKey: ["search-recipes", keyword, sortBy],
-  //   queryFn: () => fetchRecipesBySearch(keyword),
-  //   enabled: !!keyword,
-  //   staleTime: 3000,
-  //   keepPreviousData: true,
-  // });
-  return useQuery({
+  return useInfiniteQuery({
     queryKey: ["search-recipes", keyword, sortBy],
-    queryFn: () => fetchRecipesBySearch(keyword),
-    enabled: !!keyword,
+    queryFn: ({ pageParam }) =>
+      fetchRecipesBySearch(keyword, sortBy, pageParam),
+    getNextPageParam: (lastPage, allPages) => {
+      if (allPages.flatMap((page) => page.data).length < lastPage.total) {
+        return lastPage.nextPage;
+      }
+      return undefined;
+    },
     select: (data) => {
-      const recipes = data?.hits.map((hit) => {
-        const recipe = hit.recipe;
-        return {
-          ...recipe,
-          id: extractRecipeId(recipe.uri),
-          calories: recipe.calories,
-          totalTime: recipe.totalTime,
-        };
-      });
+      const recipes = data.pages.flatMap((page) =>
+        page.data.map((hit) => ({
+          ...hit.recipe,
+          id: extractRecipeId(hit.recipe.uri),
+          calories: hit.recipe.calories,
+          totalTime: hit.recipe.totalTime,
+        }))
+      );
+
       switch (sortBy) {
         case "label":
           return recipes.sort((a, b) => a.label.localeCompare(b.label));
@@ -54,7 +59,5 @@ export const useSearchRecipesQuery = ({ keyword, sortBy = "label" }) => {
           return recipes;
       }
     },
-    staleTime: 3000,
-    keepPreviousData: true,
   });
 };

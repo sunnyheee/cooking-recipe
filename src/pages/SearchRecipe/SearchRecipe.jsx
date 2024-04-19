@@ -2,9 +2,10 @@ import "./SearchRecipe.style.css";
 import { useSearchParams } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 import { useSearchRecipesQuery } from "../../hooks/useSearchRecipe";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import RecipeList from "./components/RecipeList";
 import RecipeSort from "./components/RecipeSort";
+import { BeatLoader, MoonLoader } from "react-spinners";
 
 const SearchRecipe = () => {
   const [query] = useSearchParams();
@@ -12,8 +13,11 @@ const SearchRecipe = () => {
   const [sortBy, setSortBy] = useState("relevance");
 
   const {
-    data: recipeList,
-    isLoading,
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading = true,
     isError,
     error,
   } = useSearchRecipesQuery({
@@ -21,14 +25,30 @@ const SearchRecipe = () => {
     sortBy,
   });
 
-  if (isLoading) {
-    return <h1>Loading...</h1>;
-  }
+  const loadMoreRef = useRef();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && hasNextPage) {
+          fetchNextPage();
+        }
+      },
+      { threshold: 1 }
+    );
+    if (loadMoreRef.current) {
+      observer.observe(loadMoreRef.current);
+    }
+    return () => {
+      if (loadMoreRef.current) {
+        observer.unobserve(loadMoreRef.current);
+      }
+    };
+  }, [hasNextPage, fetchNextPage]);
+
   if (isError) {
     return <Alert variant="danger">{error.message}</Alert>;
   }
-
-  console.log(recipeList, "recipeList");
   return (
     <main className="main inner">
       <section className="sec search-recipe">
@@ -39,14 +59,26 @@ const SearchRecipe = () => {
         <article className="sort-box">
           <RecipeSort setSortBy={setSortBy} />
         </article>
-        <article className="search-card-box">
-          <ul className="search-card-ul">
-            {recipeList &&
-              recipeList.map((recipe, index) => (
-                <RecipeList recipe={recipe} key={index} />
+        {isLoading ? (
+          <div className="loading-spinner">
+            <MoonLoader color="#e2725b" size={40} />
+          </div>
+        ) : (
+          <>
+            <ul className="search-card-ul">
+              {data?.map((recipe, index) => (
+                <RecipeList key={index} recipe={recipe} />
               ))}
-          </ul>
-        </article>
+            </ul>
+            <div ref={loadMoreRef} className="infinite">
+              {isFetchingNextPage === true ? (
+                <BeatLoader color="#e2725b" />
+              ) : (
+                !hasNextPage && "No more data available"
+              )}
+            </div>
+          </>
+        )}
       </section>
     </main>
   );
