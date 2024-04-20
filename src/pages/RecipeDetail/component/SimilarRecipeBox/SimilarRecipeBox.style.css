@@ -1,3 +1,24 @@
-.detail-box2 { background-color: var(--pointColorLight); border-radius: 10px;  }
-.similar-card { border-radius: 10px;  }
-.similar-card-title { font-size: var(--fz18);  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 350px; }
+.similar-box { max-width: 90%; margin: auto; }
+.similar-detail-box { border-radius: 10px; padding: var(--fz30); }
+.similar-box-title-container { display: flex; align-items: center; gap: 1.0rem; justify-content: center; }
+.similar-box-title { font-size: var(--fz38); font-weight: 700; color: black;}
+.similar-box-title-sub { font-size: var(--fz24); font-weight: 700; color: rgba(17, 17, 17, 0.789)}
+.similar-card-container { padding-bottom: var(--fz30)}
+.similar-card { border-radius: 10px; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; } 
+.similar-card:hover { transform: translateY(-10px); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+.similar-card-title { font-size: var(--fz18);  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 350px; font-weight: 700; }
+.similar-recipe-btn { background-color: antiquewhite; border-radius: 5px; padding: 0.5rem var(--fz12) ; font-weight: 600;}
+
+@media (max-width: 992px) {
+    .similar-box-title-container { flex-direction: column; gap:0.5rem }
+    .similar-card-title { font-size: var(--fz16);}
+    .similar-recipe-btn { padding: 0.3rem calc(var(--fz12) * 0.8) ; font-weight: 600;}
+}
+
+@media (max-width: 576px) {
+    .similar-box-title { font-size: calc(var(--fz38) * 0.8);}    
+    .similar-detail-box { padding: 0.8rem; }
+    .similar-card-title { font-size: var(--fz12);}    
+    .similar-recipe-btn { padding: 0.3rem calc(var(--fz12) * 0.6); font-size: var(--fz12);}
+}
+

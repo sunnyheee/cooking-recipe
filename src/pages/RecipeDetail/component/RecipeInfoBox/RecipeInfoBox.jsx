@@ -17,15 +17,15 @@ const RecipeInfoBox = ({ recipe }) => {
     console.log(recipe); 
 
     return (
-        <Container>
-            <Row >
+        <Container className="recipe-box">
+            <Row className="text-center">
                 <Col><h1 className="p-5 recipe-box-title">Recipe</h1></Col>
             </Row>
-            <Row className="detail-box1 p-5" data-aos="fade-left">
-                <Col md={6} className="d-flex justify-content-center align-items-center">
+            <Row className="recipe-detail-box p-5" data-aos="fade-left">
+                <Col md={12} lg={6} className="d-flex justify-content-center align-items-center">
                     <img src={recipe.image} alt={recipe.label} className="img-fluid detail-box-img"/>
                 </Col>
-                <Col md={6}>
+                <Col md={12} lg={6}>
                     <h1 className="pb-3 pt-3"><strong>{recipe.label}</strong></h1>
                     <p> <strong>cuisineType: </strong>{recipe.cuisineType[0]}</p>
                     <p><strong>Source:</strong> {recipe.source}</p>
