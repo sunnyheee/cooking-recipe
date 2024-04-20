@@ -1,16 +1,15 @@
 .carousel-container {
     width: 100%;
-    height: fit-content;
+    height: 400px;
     overflow: hidden;
     display: flex !important;
-    justify-content: space-between !important;
-    margin:50px 0;
-    padding:50px 0;
+    justify-content: space-evenly !important;
+    margin:10px 0;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
     .carousel-container {
-        height: 530px;
+        height:530px !important;
         display: flex !important;
         justify-content: space-between !important;
     }

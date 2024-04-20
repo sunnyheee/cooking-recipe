@@ -56,6 +56,7 @@ const Header = ({keyword, setKeyword, searchByKeyword}) => {
                             <Form.Check
                                 type="switch"
                                 id="audio-switch"
+                                className="me-2"
                                 label={`music`}
                                 onChange={onChangeAudioSwitch}
                                 defaultChecked={false}

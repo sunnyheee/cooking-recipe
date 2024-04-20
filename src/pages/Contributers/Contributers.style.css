@@ -1,6 +1,7 @@
 .contributer-section{
     background-color: beige;
     overflow-y: hidden;
+    padding: 8px;
 }
 
 .contributer-container{
@@ -8,6 +9,20 @@
 
 }
 
+.ImageCol{
+    display: flex;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
 .specialist {
     height: 300px;
+}
+
+.Mention {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-evenly;
 }

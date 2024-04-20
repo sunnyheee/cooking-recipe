@@ -34,8 +34,11 @@ nav {
 .search-btn-area button {
   font-size: var(--fz16);
 }
+.audio-switch {
+  margin: 15px 5px;
+}
 
 .speaker-icon{
   height: 30px;
-  margin: 5px;
+  margin: auto 5px;
 }

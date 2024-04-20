@@ -1,4 +1,4 @@
-import {Badge} from "react-bootstrap";
+import {Badge, Button} from "react-bootstrap";
 import "./FoodCard.style.css"
 // import {usefoodGenreQuery} from "../../hooks/UsefoodGenre";
 import {useNavigate} from "react-router-dom";
@@ -33,10 +33,8 @@ export const FoodCard = ({food}) => {
             <div className="overlay">
                 <h1 className="food-title">{food?.label}</h1>
                 <div className="food-info">
-                    <div>calories : {Math.round(food?.calories * 100) / 100}</div>
-                    <div>Cooking Time : {Math.round(food?.totalTime)}</div>
-                    {/*<div>{food?.adult ? 'ADULT' : 'ALL'}</div>*/}
-                    {/*//<div>{showGenre(food?.genre_ids).map((id) => <Badge bg="danger">{id}</Badge>)}</div>*/}
+                    <div>calories : {Math.round(food?.nutrients.ENERC_KCAL * 100) / 100}Kcal</div>
+                    <div className="button-freind"><Button variant="warning">check recipe</Button><Button variant="success">Find Similar Food</Button></div>
                 </div>
             </div>
         </div>
