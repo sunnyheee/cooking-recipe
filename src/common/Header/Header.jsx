@@ -22,7 +22,7 @@ const Header = ({keyword, setKeyword, searchByKeyword}) => {
         navigator("/");
     }
     const onClickRecipe = () => {
-        navigator("/recipe");
+        navigator("/recipe?q=popular");
     }
     const onClickContributers = () => {
         navigator("/contributers");
