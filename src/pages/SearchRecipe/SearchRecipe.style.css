@@ -12,7 +12,7 @@
 .search-card-ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.3rem;
 }
 .search-card-ul li {
   cursor: pointer;
@@ -98,4 +98,14 @@
   background-color: #007bff;
   color: white;
   border-color: #007bff;
+}
+.infinite {
+  display: flex;
+  justify-content: center;
+  font-size: var(--fz16);
+  color: var(--pointColorLight);
+}
+.loading-spinner {
+  display: flex;
+  justify-content: center;
 }

@@ -8,7 +8,7 @@ const AppLayout = () => {
   const navigate = useNavigate();
   const searchByKeyword = (e) => {
     e.preventDefault();
-    navigate(`/recipe?q=${keyword}`);
+    navigate(`/recipe?q=${keyword ? keyword : "popular"}`);
     setKeyword("");
   };
   return (
@@ -19,7 +19,7 @@ const AppLayout = () => {
         searchByKeyword={searchByKeyword}
       />
       <Outlet />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

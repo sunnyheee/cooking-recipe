@@ -1,3 +1,6 @@
+nav {
+  padding: 1rem 0 !important;
+}
 .bg-body-tertiary {
   background-color: var(--pointColor) !important;
   position: fixed; /* Set the navbar to fixed position */
