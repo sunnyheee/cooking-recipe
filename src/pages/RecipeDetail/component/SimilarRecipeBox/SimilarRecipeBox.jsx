@@ -28,20 +28,21 @@ const SimilarRecipeBox = ({ firstIngredient }) => {
   
   const firstIngredientName = recipes[0] && recipes[0].ingredients && recipes[0].ingredients[0] ? recipes[0].ingredients[0].food : 'the selected ingredient';
   return (
-    <Container className="pb-5">
-      <Row > 
-        <Col className="p-5 mb-5">
-          <h1 className="recipe-box-title">Similar Recipes Based on {firstIngredientName}</h1>
+    <Container className="pb-5 similar-box">
+      <Row className="text-center"> 
+        <Col className="p-5 similar-box-title-container">
+          <div className="similar-box-title-sub">Similar Recipes Based on</div>
+          <div className="similar-box-title"> {firstIngredientName}</div>
         </Col>
       </Row>
-      <Row xs={2} md={3} lg={4} className="detail-box2 p-5" data-aos="fade-left">
+      <Row xs={3} md={4} lg={6} className="similar-detail-box" data-aos="fade-left">
           {recipes.map((recipe, index) => (
-              <Col key={index} className="p-5">
+              <Col key={index} className="similar-card-container">
                   <Card className="similar-card" onClick={() => navigate(`/recipe/${recipe.id}`)}>
                       <Card.Img variant="top" src={recipe.image} alt={recipe.label}/>
                       <Card.Body>
-                          <Card.Title className="similar-card-title">{recipe.label}</Card.Title>                          
-                          <Button variant="primary" href={recipe.url} target="_blank">View Recipe</Button>
+                          <Card.Title className="similar-card-title pb-1">{recipe.label}</Card.Title>                          
+                          <button className="similar-recipe-btn">View Recipe</button>
                       </Card.Body>
                   </Card>
               </Col>
