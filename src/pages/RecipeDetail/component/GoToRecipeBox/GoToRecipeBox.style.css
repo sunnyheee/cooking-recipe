@@ -1,6 +1,6 @@
 .go-to-recipe-box { height: 10vh; align-items: center; }
 .recipe-btn { padding: var(--fz20) var(--fz34); font-size: var(--fz18); background-color: antiquewhite; border-radius: 10px; font-weight: 700;}
-.recipe-btn:hover { background-color: #ffccc2a5;}
+.recipe-btn:hover { background-color: #ffccc2;}
 .recipe-btn:active { background-color: var(--pointColorlight);}
 .like { gap: 10px; font-size: var(--fz20); font-weight: 700;}
 .pointer { cursor: pointer; }

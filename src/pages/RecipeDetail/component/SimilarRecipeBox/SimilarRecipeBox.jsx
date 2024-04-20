@@ -1,6 +1,6 @@
 import React from 'react';
 import './SimilarRecipeBox.style.css'
-import { Card, Button, Row, Col, Container, Alert } from 'react-bootstrap';
+import { Card, Row, Col, Container, Alert } from 'react-bootstrap';
 import { useSearchRecipesQuery } from '../../../../hooks/useSearchRecipe';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -35,7 +35,7 @@ const SimilarRecipeBox = ({ firstIngredient }) => {
           <div className="similar-box-title"> {firstIngredientName}</div>
         </Col>
       </Row>
-      <Row xs={3} md={4} lg={6} className="similar-detail-box" data-aos="fade-left">
+      <Row xs={2} md={4} lg={6} className="similar-detail-box" data-aos="fade-left">
           {recipes.map((recipe, index) => (
               <Col key={index} className="similar-card-container">
                   <Card className="similar-card" onClick={() => navigate(`/recipe/${recipe.id}`)}>
