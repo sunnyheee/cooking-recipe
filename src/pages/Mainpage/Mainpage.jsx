@@ -68,7 +68,7 @@ const Mainpage = () => {
                                 </Stack>
                             </Col>
                             <Col sm={5}>
-                                <img className={"mainLogo"} src={"/images/recipe-main-floating.png"}/>
+                                <img className={"mainLogo"} src={"/images/recipe-main-floating.png"} alt="recipe-main-floating"/>
                             </Col>
                         </Row>
                     </Col>
