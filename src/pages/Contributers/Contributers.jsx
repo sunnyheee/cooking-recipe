@@ -11,12 +11,12 @@ export const Contributers = () => {
 
                 </Col>
                 <Col sm={5}>
-                    <img className={"specialist"} src={"/images/contributer/LJS.png"}/>
+                    <img className={"specialist"} src={"/images/contributer/LJS.png"} alt="LJS"/>
                 </Col>
             </Row>
             <Row data-aos="fade-up" data-aos-duration="2000" className="contributer-section">
                 <Col sm={5}>
-                    <img className={"specialist"} src={"/images/contributer/KSH.png"}/>
+                    <img className={"specialist"} src={"/images/contributer/KSH.png"} alt="KSH"/>
                 </Col>
                 <Col sm={7} className="Mention">
 
@@ -27,7 +27,7 @@ export const Contributers = () => {
 
                 </Col>
                 <Col sm={5}>
-                    <img className={"specialist"} src={"/images/contributer/LHJ.png"}/>
+                    <img className={"specialist"} src={"/images/contributer/LHJ.png"} alt="LHJ"/>
                 </Col>
             </Row>
         </Container>

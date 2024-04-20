@@ -62,7 +62,7 @@ const Header = ({keyword, setKeyword, searchByKeyword}) => {
                             />
                         </Form>
                         <OverlayTrigger trigger="click" placement="bottom" overlay={PopoverSlider(onChangeAudioVolume)}>
-                            <img className="speaker-icon" src="/images/speaker-icon.svg"/>
+                            <img className="speaker-icon" src="/images/speaker-icon.svg" alt="cooking-recipe"/>
                         </OverlayTrigger>
                         <Nav.Link onClick={onClickHome}>Home</Nav.Link>
                         <Nav.Link onClick={onClickRecipe}>Recipe</Nav.Link>

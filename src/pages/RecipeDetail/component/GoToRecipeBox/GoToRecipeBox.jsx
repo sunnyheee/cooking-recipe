@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import "./GoToRecipeBox.style.css";
 import { Container } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
 
 const GoToRecipeBox = ({recipe}) => { 
   const [heartLiked, setHeartLiked] = useState(false);

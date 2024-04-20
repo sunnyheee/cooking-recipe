@@ -1,4 +1,3 @@
-import {Badge} from "react-bootstrap";
 import "./FoodCard.style.css"
 // import {usefoodGenreQuery} from "../../hooks/UsefoodGenre";
 import {useNavigate} from "react-router-dom";

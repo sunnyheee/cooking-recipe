@@ -28,6 +28,7 @@ const SearchRecipe = () => {
   const loadMoreRef = useRef();
 
   useEffect(() => {
+    const currentElement = loadMoreRef.current;
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && hasNextPage) {
@@ -36,12 +37,12 @@ const SearchRecipe = () => {
       },
       { threshold: 1 }
     );
-    if (loadMoreRef.current) {
-      observer.observe(loadMoreRef.current);
+    if (currentElement) {
+      observer.observe(currentElement);
     }
     return () => {
-      if (loadMoreRef.current) {
-        observer.unobserve(loadMoreRef.current);
+      if (currentElement) {
+        observer.unobserve(currentElement);
       }
     };
   }, [hasNextPage, fetchNextPage]);
