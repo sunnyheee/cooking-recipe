@@ -1,5 +1,4 @@
 import './RecipeDetail.style.css';
-import React, { useEffect } from 'react';
 import { Alert } from "react-bootstrap";
 import { useParams } from 'react-router-dom';
 import { useRecipeDetailQuery } from '../../hooks/useRecipeDetail.js'
