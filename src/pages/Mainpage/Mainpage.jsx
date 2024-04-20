@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-import {Badge, Col, Button, Row, Stack} from "react-bootstrap";
+import {Badge, Col, Button, Row, Stack,Alert} from "react-bootstrap";
 import "./Mainpage.style.css"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -42,6 +42,12 @@ const Mainpage = () => {
             section1_data_right = section1.slice(3,5);
         }
 
+        if (isError) {
+            return <Alert variant="danger">{error.message}</Alert>;
+          }   if (isError1) {
+            return <Alert variant="danger">{error1.message}</Alert>;
+          }
+
         return (
             < Container className="mainPageContainer">
                 < Row data-aos="fade-up" data-aos-duration="2000" data-aos-mirror="true"
@@ -62,7 +68,7 @@ const Mainpage = () => {
                                 </Stack>
                             </Col>
                             <Col sm={5}>
-                                <img className={"mainLogo"} src={"/images/recipe-main-floating.png"}/>
+                                <img className={"mainLogo"} src={"/images/recipe-main-floating.png"} alt="recipe-main-floating"/>
                             </Col>
                         </Row>
                     </Col>

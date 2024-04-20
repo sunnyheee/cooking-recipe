@@ -2,28 +2,30 @@ import React, { useEffect, useRef } from 'react';
 import {useSelector} from "react-redux";
 
 const AudioComponent = () => {
-    const audio = document.querySelector("audio");
-    const audioState = useSelector((state)=>state.audio.value);
-    const audioVolume = useSelector((state)=>state.audio.volume);
-
-    console.log(audioState);
-    console.log(audioVolume);
-    navigator.mediaDevices.getUserMedia({audio: true}).then(() => {
-        AudioContext = window.AudioContext || window.webkitAudioContext;
-        if(!audioState){
-            return;
-        }
-        audio.volume=parseFloat(audioVolume);
-        audio.play();
-    }).catch(e => {
-        console.error(`Audio permissions denied: ${e}`);
-    });
   const audioRef = useRef(null);
+  const audioState = useSelector((state) => state.audio.value);
+  const audioVolume = useSelector((state) => state.audio.volume);
+
+  console.log(audioState);
+  console.log(audioVolume);
+
   useEffect(() => {
-      if(!audioState){
-          audio.pause();
+      navigator.mediaDevices.getUserMedia({audio: true}).then(() => {
+          if (audioRef.current && audioState) {
+              audioRef.current.volume = parseFloat(audioVolume);
+              audioRef.current.play();
+          }
+      }).catch(e => {
+          console.error(`Audio permissions denied: ${e}`);
+      });
+  }, [audioState, audioVolume]);
+
+  useEffect(() => {
+      if (audioRef.current && !audioState) {
+          audioRef.current.pause();
       }
-  }, [audioState,audioVolume]);
+  }, [audioState]);
+
 
   return (
     <audio ref={audioRef} controls loop style={{visibility:"hidden"}}>
