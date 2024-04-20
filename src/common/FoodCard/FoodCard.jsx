@@ -1,4 +1,4 @@
-import {Badge, Button} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import "./FoodCard.style.css"
 // import {usefoodGenreQuery} from "../../hooks/UsefoodGenre";
 import {useNavigate} from "react-router-dom";
