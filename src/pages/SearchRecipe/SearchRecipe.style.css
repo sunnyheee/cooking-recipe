@@ -109,3 +109,13 @@
   display: flex;
   justify-content: center;
 }
+@media screen and (max-width: 768px) {
+  .search-card-ul li {
+    width: calc(100% / 2 - 1rem);
+  }
+}
+@media screen and (max-width: 480px) {
+  .search-card-ul li {
+    width: 100%
+  }
+}
