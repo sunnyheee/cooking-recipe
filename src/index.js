@@ -5,15 +5,24 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, RouterProvider} from 'react-router-dom';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import AudioComponent from "./common/AudioComponent/AudioComponent";
+import {Provider} from 'react-redux'
+import store from "./redux/Store";
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient()
 root.render(
     <BrowserRouter>
-        <QueryClientProvider client={queryClient}>
-            {/*<RouterProvider router={}/>*/}
-            <App/>
-        </QueryClientProvider>
+        <div>
+            <Provider store={store}>
+                <AudioComponent></AudioComponent>
+                <QueryClientProvider client={queryClient}>
+                    {/*<RouterProvider router={}/>*/}
+                    <App/>
+                </QueryClientProvider>
+            </Provider>
+        </div>
     </BrowserRouter>
 );
 
