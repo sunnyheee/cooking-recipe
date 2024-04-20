@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
+import "./GoToRecipeBox.style.css";
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 
-const GoToRecipeBox = ({recipe}) => {
+const GoToRecipeBox = ({recipe}) => { 
+  const [heartLiked, setHeartLiked] = useState(false);
  
   return (
-    <Container>
-        <div>
-            <Button variant="primary" size="lg" href={recipe.url}>
-                View recipe
-            </Button>            
+    <Container className='pt-5'>
+      <div className="d-flex justify-content-center go-to-recipe-box">
+        <div className="p-5">
+            <button className="recipe-btn">
+                <a  href={recipe.url}>View recipe</a>
+            </button>            
         </div>
-        <div>좋아요</div>    
+        <div className="p-5 d-flex like pointer"> 
+          <div>Like</div>                    
+          <div onClick={() => setHeartLiked(!heartLiked)} className="pointer">  
+            {heartLiked ? '❤️' : '🤍'}  
+          </div>
+          
+        </div>    
+      </div>
              
     </Container>
   )

@@ -1,2 +1,3 @@
-.detail-box { background-color: antiquewhite; }
+.recipe-box-title { font-size: var(--fz40); font-weight: 700; color: black;}
+.detail-box1 { background-color: var(--pointColorLight); color: #000000; border-radius: 10px;}
 .detail-box-img { width: 400px; }

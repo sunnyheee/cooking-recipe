@@ -3,6 +3,11 @@ nav {
 }
 .bg-body-tertiary {
   background-color: var(--pointColor) !important;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 3;
+  margin-bottom: 100px;
 }
 .bg-body-tertiary a {
   color: #fff;
@@ -14,6 +19,7 @@ nav {
 }
 .logo-img {
   max-width: 130px;
+  cursor: pointer;
 }
 .search-btn {
   background-color: #bf351a !important;
@@ -27,4 +33,9 @@ nav {
 .search-btn-area input,
 .search-btn-area button {
   font-size: var(--fz16);
+}
+
+.speaker-icon{
+  height: 30px;
+  margin: 5px;
 }
