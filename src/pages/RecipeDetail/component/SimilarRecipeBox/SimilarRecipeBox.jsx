@@ -24,8 +24,6 @@ const SimilarRecipeBox = ({ firstIngredient }) => {
   }
   if (!recipes) return <div>Recipe not found.</div>;
   
-  console.log("첫번째 재료" , recipes);  
-  
   const firstIngredientName = recipes[0] && recipes[0].ingredients && recipes[0].ingredients[0] ? recipes[0].ingredients[0].food : 'the selected ingredient';
   return (
     <Container className="pb-5 similar-box">

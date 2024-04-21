@@ -10,7 +10,7 @@ export const FoodSlider = ({title, data}) => {
     AOS.init();
     return (
         <div>
-            <h3 data-aos="slide-left" data-aos-duration="2000">{title}</h3>
+            <h3 data-aos="slide-left" data-aos-duration="2000" className="titleWord d-inline">{title}</h3>
             <Carousel
                 infinite={true}
                 centerMode={true}

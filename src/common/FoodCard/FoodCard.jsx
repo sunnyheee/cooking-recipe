@@ -26,7 +26,9 @@ export const FoodCard = ({food}) => {
         <div
             className="food-card"
             style={{
-                backgroundImage: `url("${food?.image}")`
+                backgroundImage: `url("${food?.image}")`,
+                backgroundRepeat: `no-repeat`,
+                backgroundSize: 'cover'
             }}
             onClick={(event)=>handleClick(event,food)}
         >
@@ -34,7 +36,7 @@ export const FoodCard = ({food}) => {
                 <h1 className="food-title">{food?.label}</h1>
                 <div className="food-info">
                     <div>calories : {Math.round(food?.nutrients.ENERC_KCAL * 100) / 100}Kcal</div>
-                    <div className="button-freind"><Button variant="warning">check recipe</Button><Button variant="success">Find Similar Food</Button></div>
+                    <div className="button-freind"><Button variant="warning">check recipe</Button></div>
                 </div>
             </div>
         </div>

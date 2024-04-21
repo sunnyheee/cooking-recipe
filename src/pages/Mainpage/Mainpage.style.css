@@ -138,3 +138,9 @@
          margin :20px;
     }
 }
+.sideLayout{
+    width: 30%;
+}
+.mainLayout{
+    width: 30%;
+}

@@ -14,7 +14,6 @@ const RecipeInfoBox = ({ recipe }) => {
     }, []); // 초기 렌더링 시 한 번만 호출
 
     if (!recipe) return <p>No recipe data available.</p>;
-    console.log(recipe); 
 
     return (
         <Container className="recipe-box">

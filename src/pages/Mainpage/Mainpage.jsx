@@ -4,25 +4,17 @@ import {Badge, Col, Button, Row, Stack,Alert} from "react-bootstrap";
 import "./Mainpage.style.css"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import {FoodSlider} from "../../common/FoodSlider/FoodSlider";
 import {useRandomFood} from "../../hooks/useRandomRecipe";
 import {FoodCard} from "../../common/FoodCard/FoodCard";
 import {useNavigate} from "react-router-dom";
 
-
 const Mainpage = () => {
         AOS.init();
 
         const {width} = useWindowDimensions();
-        console.log(width);
         const navigator = useNavigate();
-
-        const onBtnGoFindRecipe = () => {
-            navigator("/recipe")
-        };
-
         const onBtnGoLookAround = () => {
             navigator("/recipe?q=Random%20Foods");
         };
@@ -39,7 +31,6 @@ const Mainpage = () => {
 
         const {data, isLoading, isError, error} = useRandomFood(keyword);
         const {data: section1, isLoading1, isError1, error1} = useRandomFood(keyword2);
-        console.log(data);
         let section1_data_main, section1_data_left, section1_data_right;
         if (!isLoading1 && section1) {
             section1_data_main = section1[0];
@@ -66,10 +57,9 @@ const Mainpage = () => {
                                         <div><Badge pill bg="warning">Nutrition · Favor · Health</Badge></div>
                                         <div></div>
                                         <span className="titleWord d-inline"><h1>Get Started With Today's Best Menu!</h1></span>
-                                        <div><Button onClick={onBtnGoFindRecipe} className="btnGoFindRecipe" variant="warning">Find
-                                            Recipe</Button> <Button
+                                        <div> <Button
                                             onClick={onBtnGoLookAround}
-                                            className="btnLookAround" variant="outline-dark">Look
+                                            className="btnLookAround" variant="warning">Look
                                             Around Foods</Button></div>
                                     </Stack>
                                 </Col>
@@ -83,10 +73,9 @@ const Mainpage = () => {
                                         <div><Badge pill bg="warning">Nutrition · Favor · Health</Badge></div>
                                         <div></div>
                                         <span className="titleWord d-inline"><h1>Get Started With Today's Best Menu!</h1></span>
-                                        <div><Button onClick={onBtnGoFindRecipe} className="btnGoFindRecipe" variant="warning">Find
-                                            Recipe</Button> <Button
+                                        <div><Button
                                             onClick={onBtnGoLookAround}
-                                            className="btnLookAround" variant="outline-dark">Look
+                                            className="btnLookAround" variant="warning">Look
                                             Around Foods</Button></div>
                                     </Stack>
                                 </Col>
@@ -106,13 +95,13 @@ const Mainpage = () => {
                 {!isLoading1 ? <Row data-aos="fade-up" data-aos-duration="2000" className="section1Background">
                <span style={{textAlign:"center"}} data-aos="slide-left" data-aos-duration="2000" className="titleWord d-inline"><h2>Make Something Delicious With {keyword2}!</h2></span>
                         <Col sm={12} fluid="md" className="section1">
-                            {width>=1000 ? (<><div sm={3}>
+                            {width>=1000 ? (<><div sm={3} className="sideLayout">
                                 <Stack gap={3}>
                                     {section1_data_left?.map((food)=><FoodCard style={{height: "100%"}} md={3} food={food?.food}/>)}
                                 </Stack>
                             </div>
-                            <div sm={6}><FoodCard style={{height: "100%"}} md={6} food={section1_data_main?.food}/></div>
-                            <div sm={3}><Stack gap={3}>
+                            <div className="mainLayout" sm={6}><FoodCard style={{height: "100%"}} food={section1_data_main?.food}/></div>
+                            <div sm={3} className="sideLayout"><Stack gap={3}>
                                 {section1_data_right?.map((food)=><FoodCard style={{height: "100%"}} md={3} food={food?.food}/>)}
                             </Stack></div></>)
                             :(<>
